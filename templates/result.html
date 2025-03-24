@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assessment Results</title>
+</head>
+<body>
+    <h1>Cybersecurity Assessment Results</h1>
+    <p>Your score: {{ score }} out of {{ total }}</p>
+    <h2>Risk Level: {{ level }}</h2>
+
+    {% if failed_questions %}
+        <h3>Areas for Improvement:</h3>
+        <ul>
+        {% for item in failed_questions %}
+            <li>
+                <strong>{{ item.question }}</strong><br>
+                <em>Why it matters:</em> {{ item.explanation }}<br>
+                <em>How attackers exploit it:</em> {{ item.exploitation }}<br>
+                <em>Impact on clients:</em> {{ item.client_impact }}<br>
+                <em>HIPAA/Compliance:</em> {{ item.compliance }}<br>
+                <em>How I can help:</em> {{ item.help }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Awesome! You passed all items with a strong cybersecurity posture.</p>
+    {% endif %}
+
+    <form action="/download" method="POST">
+        {% for q in questions %}
+            <input type="hidden" name="{{ q }}" value="{{ answers[q] }}">
+        {% endfor %}
+        <button type="submit">Download PDF Report</button>
+    </form>
+</body>
+</html>
