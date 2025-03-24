@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Automotive Cybersecurity Checklist</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Automotive Cybersecurity Checklist</h1>
+        <p>This checklist is for small-to-mid-sized automotive aftermarket companies to assess their cybersecurity posture.</p>
+        <form method="POST">
+            {% for question in questions %}
+                <div class="question-block">
+                    <label>{{ question }}</label><br>
+                    <input type="radio" name="{{ question }}" value="yes" required> Yes
+                    <input type="radio" name="{{ question }}" value="no"> No
+                </div>
+            {% endfor %}
+            <button type="submit">Submit Assessment</button>
+        </form>
+    </div>
+</body>
+</html>
