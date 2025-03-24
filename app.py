@@ -11,7 +11,7 @@
             font-family: 'Roboto', sans-serif;
             background-color: #f2f5f7;
             color: #333;
-            padding: 20px;
+            
         }
         .container {
             background: #ffffff;
